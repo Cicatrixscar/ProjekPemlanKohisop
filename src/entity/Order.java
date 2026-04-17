@@ -73,7 +73,7 @@ public class Order {
         this.selectedPayment = payment;
     }
 
-    public void selectedCurrency(Currency currency) {
+    public void setCurrency(Currency currency) {
         this.selectedCurrency = currency;
     }
 
@@ -145,31 +145,42 @@ public class Order {
     }
 
     public void displayOrderSummary() {
-        System.out.println("\n========== RINGKASAN ORDER ==========");
+        if (isEmpty()) {
+            System.out.println("\n Pesanan Anda Masih Kosong !");
+            return;
+        }
+
+        System.out.println("\n==================================================");
+        System.out.println("============= Ringkasan Pesanan Anda =============");
+        System.out.println("==================================================");
         
         List<OrderItem> beverages = getBeverageItems();
         if (!beverages.isEmpty()) {
             System.out.println("\n--- Minuman ---");
+            int no = 1;
             for (OrderItem item : beverages) {
-                System.out.println(item);
+                System.out.printf("   %d. %s (%s) x%d\n", no, item.getName(), item.getCode(), item.getQuantity());
+                System.out.printf("      Harga: Rp %.2f | Pajak: Rp %.2f | Subtotal: Rp %.2f\n", item.getSubtotal(),
+                        item.getTaxAmount(), item.getTotal());
+                no++;
             }
         }
         
         List<OrderItem> foods = getFoodItems();
         if (!foods.isEmpty()) {
             System.out.println("\n--- Makanan ---");
+            int no = 1;
             for (OrderItem item : foods) {
-                System.out.println(item);
+                System.out.printf("   %d. %s (%s) x%d\n", no, item.getName(), item.getCode(), item.getQuantity());
+                System.out.printf("      Harga: Rp %.2f | Pajak: Rp %.2f | Subtotal: Rp %.2f\n", item.getSubtotal(),
+                        item.getTaxAmount(), item.getTotal());
+                no++;
             }
         }
         
-        System.out.println("\n--- TOTAL ---");
-        System.out.printf("Total Minuman : Rp %.2f\n", getTotalBeverageBeforeTax());
-        System.out.printf("Total Makanan : Rp %.2f\n", getTotalFoodBeforeTax());
-        System.out.printf("Pajak Minuman : Rp %.2f\n", getTotalBeverageTax());
-        System.out.printf("Pajak Makanan : Rp %.2f\n", getTotalFoodTax());
-        System.out.printf("TOTAL : Rp %.2f\n", getTotalAfterTax());
-        System.out.println("===============================================\n");
+        System.out.println("\n--------------------------------------------------");
+        System.out.printf("TOTAL PESANAN: Rp %.2f\n", getTotalAfterTax());
+        System.out.println("==================================================\n");
     }
 
 }
