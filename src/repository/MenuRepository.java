@@ -1,82 +1,66 @@
-import java.util.*;
+package repository;
+
+import entity.Beverage;
+import entity.Food;
+import entity.Menu;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MenuRepository {
-    private Map<String, Beverage> beverages;
-    private Map<String, Food> foods;
+    
+    private List<Menu> menus;
 
     public MenuRepository() {
-        beverages = new HashMap<>();
-        foods = new HashMap<>();
-        initializeBeverages();
-        initializeFoods();
+        this.menus = new ArrayList<>();
+        initializeMenus();
     }
 
-    private void initializeBeverages() {
-        beverages.put("B1", new Beverage("B1", "Americano", 20000));
-        beverages.put("B2", new Beverage("B2", "Latte", 25000));
-        beverages.put("B3", new Beverage("B3", "Cappuccino", 25000));
-    }
-
-    private void initializeFoods() {
-        foods.put("F1", new Food("F1", "Croissant", 15000));
-        foods.put("F2", new Food("F2", "Sandwich", 30000));
-        foods.put("F3", new Food("F3", "Cake", 28000));
-    }
-
-    public Beverage getBeverageByCode(String code) {
-        return beverages.get(code.toUpperCase());
-    }
-
-    public Food getFoodByCode(String code) {
-        return foods.get(code.toUpperCase());
+    public void initializeMenus() {
+        // Makanan
+        menus.add(new Food("F1", "Croissant", 15000));
+        menus.add(new Food("F2", "Sandwich", 30000));
+        menus.add(new Food("F3", "Cake", 28000));
+        
+        // Minuman
+        menus.add(new Beverage("B1", "Americano", 20000));
+        menus.add(new Beverage("B2", "Latte", 25000));
+        menus.add(new Beverage("B3", "Cappuccino", 25000));
     }
 
     public Menu getMenuByCode(String code) {
-        code = code.toUpperCase();
-        if (beverages.containsKey(code)) {
-            return beverages.get(code);
-        } else if (foods.containsKey(code)) {
-            return foods.get(code);
+        if (code == null) return null;
+        
+        for (Menu menu : menus) {
+            if (menu.getCodeMenu().equalsIgnoreCase(code)) {
+                return menu;
+            }
         }
         return null;
     }
 
-    public List<Beverage> getAllBeverages() {
-        return new ArrayList<>(beverages.values());
-    }
-
-    public List<Food> getAllFoods() {
-        return new ArrayList<>(foods.values());
-    }
-
-    public boolean isValidBeverageCode(String code) {
-        return beverages.containsKey(code.toUpperCase());
-    }
-
-    public boolean isValidFoodCode(String code) {
-        return foods.containsKey(code.toUpperCase());
+    public List<Menu> getAllMenus() {
+        return menus;
     }
 
     public boolean isValidMenuCode(String code) {
-        return isValidBeverageCode(code) || isValidFoodCode(code);
-    }
-
-    public void displayBeverageMenu() {
-        System.out.println("\n=== BEVERAGES ===");
-        for (Beverage b : beverages.values()) {
-            System.out.println(b.getCode() + " - " + b.getName() + " : " + b.getPrice());
-        }
-    }
-
-    public void displayFoodMenu() {
-        System.out.println("\n=== FOODS ===");
-        for (Food f : foods.values()) {
-            System.out.println(f.getCode() + " - " + f.getName() + " : " + f.getPrice());
-        }
+        return getMenuByCode(code) != null;
     }
 
     public void displayAllMenu() {
-        displayBeverageMenu();
-        displayFoodMenu();
+        System.out.println("\n[ DAFTAR MENU KOHISOP ]");
+        
+        System.out.println("--- Minuman ---");
+        for (Menu menu : menus) {
+            if (menu instanceof Beverage) {
+                System.out.printf("%s - %s : Rp %.2f\n", menu.getCodeMenu(), menu.getName(), menu.getPrice());
+            }
+        }
+        
+        System.out.println("\n--- Makanan ---");
+        for (Menu menu : menus) {
+            if (menu instanceof Food) {
+                System.out.printf("%s - %s : Rp %.2f\n", menu.getCodeMenu(), menu.getName(), menu.getPrice());
+            }
+        }
     }
 }
