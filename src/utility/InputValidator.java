@@ -1,6 +1,10 @@
 package utility;
 
+import entity.Beverage;
+import entity.Food;
 import entity.Menu;
+import payment.PaymentChannel;
+import repository.MenuRepository;
 
 public class InputValidator {
     private static final String SKIP_INPUT = "S";
