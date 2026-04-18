@@ -1,3 +1,5 @@
+package payment;
+
 public class CreditCard implements PaymentChannel {
     private static final double DISCOUNT_RATE = 0.00;
     private static final double ADMIN_FEE = 5000.0;

@@ -1,3 +1,5 @@
+package payment;
+
 public interface PaymentChannel {
     double getDiscount();
     double getAdminFee();

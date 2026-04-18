@@ -1,3 +1,5 @@
+package payment;
+
 public class Cash implements PaymentChannel {
     private String paymentName;
 

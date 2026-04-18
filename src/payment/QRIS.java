@@ -1,3 +1,5 @@
+package payment;
+
 public class QRIS implements PaymentChannel {
     private static final double DISCOUNT_RATE = 0.05;
     private static final double ADMIN_FEE = 0.0;
