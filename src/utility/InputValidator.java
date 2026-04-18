@@ -63,7 +63,7 @@ public class InputValidator {
             return false;
         }
         String code = choice.trim().toUpperCase();
-        return code.equals("USD") || code.equals("JPY") || 
+        return code.equals("IDR") || code.equals("USD") || code.equals("JPY") || 
                code.equals("MYR") || code.equals("EUR");
     }
 

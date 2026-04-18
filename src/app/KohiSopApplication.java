@@ -2,13 +2,12 @@ package app;
 
 import currency.*;
 import entity.*;
-import payment.*;
-import repository.MenuRepository;
-import utility.InputValidator;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import payment.*;
+import repository.MenuRepository;
+import utility.InputValidator;
 
 public class KohiSopApplication {
     private MenuRepository menuRepository;
@@ -38,6 +37,7 @@ public class KohiSopApplication {
     }
 
     private void initializeCurrencies() {
+        currencies.add(new IDR());
         currencies.add(new USD());
         currencies.add(new JPY());
         currencies.add(new MYR());

@@ -1,5 +1,7 @@
 package utility;
 
+import entity.Order;
+import entity.OrderItem;
 import java.util.List;
 
 public class PriceCalculator {

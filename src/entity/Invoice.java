@@ -2,6 +2,8 @@ package entity;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import payment.PaymentChannel;
+import currency.Currency;
 
 public class Invoice {
     private Receipt receipt;
