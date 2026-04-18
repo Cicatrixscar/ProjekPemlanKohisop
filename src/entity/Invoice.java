@@ -136,7 +136,7 @@ public class Invoice {
         
         System.out.println("-".repeat(56));
         System.out.printf("TOTAL PEMBAYARAN (IDR) : Rp %,.2f\n", finalTotalInIDR);
-        System.out.printf("TOTAL PEMBAYARAN (%s) :  %s\n",
+        System.out.printf("TOTAL PEMBAYARAN (%s) : %s\n",
                 currency.getCode(), currency.formatCurrency(finalTotalInCurrency));
         
         if (installmentTerm > 0) {
