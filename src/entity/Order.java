@@ -1,6 +1,7 @@
 package entity;
-import java.util.*;
 
+import java.util.*;
+import currency.Currency;
 import payment.PaymentChannel;
 
 public class Order {
@@ -46,13 +47,13 @@ public class Order {
     }
 
     public List<OrderItem> getFoodItems() {
-        List<OrderItem> food = new ArrayList<>();
+        List<OrderItem> foods = new ArrayList<>();
         for (OrderItem item : items) {
             if (item.getMenu() instanceof Food) {
-                food.add(item);
+                foods.add(item);
             }
         }
-        return food;
+        return foods;
     }
 
     //Get
@@ -136,7 +137,7 @@ public class Order {
             throw new IllegalStateException("Metode Pembayaran Belum Dipilih !");
         }
         if (selectedCurrency == null) {
-            throw new IllegalStateException("Currency Belum Dipilih!");
+            throw new IllegalStateException("Mata Uang Belum Dipilih!");
         }
     }
 

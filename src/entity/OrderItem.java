@@ -48,7 +48,7 @@ public class OrderItem {
     }
 
     public double getTaxAmount() {
-        return menu.getSubtotal(quantity);
+        return menu.calculateTax(quantity);
     }
 
     public double getTotal() {
@@ -57,6 +57,6 @@ public class OrderItem {
 
     @Override
     public String toString() {
-        return String.format("%s x%d - Rp %2.f (Tax : Rp %.2f) = Rp %.2f", getCode(), quantity, getSubtotal(), getTaxAmount(), getTotal());
+        return String.format("%s x%d - Rp %.2f (Tax : Rp %.2f) = Rp %.2f", getCode(), quantity, getSubtotal(), getTaxAmount(), getTotal());
     }
 }
