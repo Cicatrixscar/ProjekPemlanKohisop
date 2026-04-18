@@ -1,9 +1,9 @@
 package entity;
 
+import currency.Currency;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import payment.PaymentChannel;
-import currency.Currency;
 
 public class Invoice {
     private Receipt receipt;
@@ -83,9 +83,14 @@ public class Invoice {
         System.out.println("-".repeat(56));
         
         int itemNumber = 1;
-        if (receipt.getBeverageItems().size() > 0) {
-            System.out.println("\n[ Minuman ]");
-            for (OrderItem item : receipt.getBeverageItems()) {
+
+        boolean headerBeveragePrinted = false;
+        for (OrderItem item : receipt.getItems()) {
+            if (item.getMenu() instanceof Beverage) {
+                if (!headerBeveragePrinted) {
+                    System.out.println("\n[ Minuman ]");
+                    headerBeveragePrinted = true;
+                }
                 System.out.printf("   %d. %-30s x%d\n", itemNumber, item.getName(), item.getQuantity());
                 System.out.printf("      - Harga: Rp %.2f\n", item.getSubtotal());
                 System.out.printf("      - Pajak: Rp %.2f\n", item.getTaxAmount());
@@ -93,9 +98,13 @@ public class Invoice {
             }
         }
         
-        if (receipt.getFoodItems().size() > 0) {
-            System.out.println("\n[ Makanan ]");
-            for (OrderItem item : receipt.getFoodItems()) {
+        boolean headerFoodPrinted = false;
+        for (OrderItem item : receipt.getItems()) {
+            if (item.getMenu() instanceof Food) {
+                if (!headerFoodPrinted) {
+                    System.out.println("\n[ Makanan ]");
+                    headerFoodPrinted = true;
+                }
                 System.out.printf("   %d. %-30s x%d\n", itemNumber, item.getName(), item.getQuantity());
                 System.out.printf("      - Harga: Rp %.2f\n", item.getSubtotal());
                 System.out.printf("      - Pajak: Rp %.2f\n", item.getTaxAmount());
