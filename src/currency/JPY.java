@@ -4,7 +4,7 @@ public class JPY implements Currency {
     
     private static final String CODE = "JPY";
     private static final String SYMBOL = "Y";
-    private static final double EXCHANGE_RATE = 0.1;
+    private static final double EXCHANGE_RATE = 100.0;
     
     @Override
     public String getCode() {

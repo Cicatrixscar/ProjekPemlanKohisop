@@ -11,12 +11,12 @@ public class Food extends Menu {
         double subtotal = getSubtotal(quantity);
         double taxRate;
 
-        if (price >= 50) {
+        if (price >= 50000) {
             taxRate = 0.08;
         } else {
             taxRate = 0.11;
         }
-
+        
         return subtotal * taxRate;
     }
 

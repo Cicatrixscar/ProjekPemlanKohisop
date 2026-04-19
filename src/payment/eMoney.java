@@ -2,7 +2,7 @@ package payment;
 
 public class eMoney implements PaymentChannel {
     private static final double DISCOUNT_RATE = 0.07;
-    private static final double ADMIN_FEE = 20.0;
+    private static final double ADMIN_FEE = 2000.0;
     private String paymentName;
     private double balance;
 

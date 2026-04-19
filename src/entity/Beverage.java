@@ -11,14 +11,14 @@ public class Beverage extends Menu {
         double subtotal = getSubtotal(quantity);
         double taxRate;
 
-        if (price < 50) {
+        if (price < 50000) {
             taxRate = 0.0;
-        } else if (price >= 50 && price <= 55) {
+        } else if (price >= 50000 && price <= 55000) {
             taxRate = 0.08;
         } else {
             taxRate = 0.11;
         }
-
+        
         return subtotal * taxRate;
     }
 

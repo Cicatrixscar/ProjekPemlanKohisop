@@ -4,7 +4,7 @@ public class MYR implements Currency {
     
     private static final String CODE = "MYR";
     private static final String SYMBOL = "RM";
-    private static final double EXCHANGE_RATE = 4.0;
+    private static final double EXCHANGE_RATE = 4000.0;
     
     @Override
     public String getCode() {
