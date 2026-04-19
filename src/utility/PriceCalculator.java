@@ -49,10 +49,10 @@ public class PriceCalculator {
         }
         
         switch (currency.toUpperCase()) {
-            case "USD": return amountIDR / 17.0;
+            case "USD": return amountIDR / 15.0;
             case "JPY": return amountIDR / 0.1;
             case "MYR": return amountIDR / 4.0;
-            case "EUR": return amountIDR / 20.0;
+            case "EUR": return amountIDR / 14.0;
             default: return amountIDR;
         }
     }

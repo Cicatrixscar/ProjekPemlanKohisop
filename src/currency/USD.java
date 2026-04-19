@@ -4,7 +4,7 @@ public class USD implements Currency {
     
     private static final String CODE = "USD";
     private static final String SYMBOL = "$";
-    private static final double EXCHANGE_RATE = 17.0;
+    private static final double EXCHANGE_RATE = 15.0;
     
     @Override
     public String getCode() {

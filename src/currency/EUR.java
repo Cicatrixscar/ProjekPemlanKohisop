@@ -4,7 +4,7 @@ public class EUR implements Currency {
     
     private static final String CODE = "EUR";
     private static final String SYMBOL = "E";
-    private static final double EXCHANGE_RATE = 20.0;
+    private static final double EXCHANGE_RATE = 14.0;
     
     @Override
     public String getCode() {
