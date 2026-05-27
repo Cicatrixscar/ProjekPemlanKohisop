@@ -1,13 +1,20 @@
 package entity;
 
 public class Food extends Menu {
-    
+
+    private boolean taxFree = false;
+
     public Food(String codeMenu, String name, double price) {
         super(codeMenu, name, price);
     }
 
+    public void setTaxFree(boolean taxFree) { this.taxFree = taxFree; }
+    public boolean isTaxFree() { return taxFree; }
+
     @Override
     public double calculateTax(int quantity) {
+        if (taxFree) return 0.0;
+
         double subtotal = getSubtotal(quantity);
         double taxRate;
 
@@ -16,7 +23,7 @@ public class Food extends Menu {
         } else {
             taxRate = 0.11;
         }
-        
+
         return subtotal * taxRate;
     }
 

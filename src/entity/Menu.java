@@ -36,6 +36,10 @@ public abstract class Menu {
 
     public abstract String getCategory();
 
+    public abstract void setTaxFree(boolean taxFree);
+
+    public abstract boolean isTaxFree();
+
     public double getSubtotal(int quantity) {
         return price * quantity;
     }
